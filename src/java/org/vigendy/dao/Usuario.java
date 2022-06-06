@@ -15,8 +15,9 @@ public class Usuario implements Serializable{
     private String email;
     private Float peso;
     private Float altura;
+    private String pw;
     private Blob fotoPP;
-
+ 
     public Usuario() {
     }
 
@@ -98,5 +99,12 @@ public class Usuario implements Serializable{
 
     public void setFotoPP(Blob fotoPP) {
         this.fotoPP = fotoPP;
+    }
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 }

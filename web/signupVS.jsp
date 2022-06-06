@@ -94,7 +94,7 @@
         <p class="mt-1 text-sm text-gray-500">Esta informaci&oacute;n será utilizada para fines de la plataforma, as&iacute; que se lo m&aacute;s sincero posible</p>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-          <form class="space-y-6" action="#" method="POST" enctype="multipart/form-data">
+          <form class="space-y-6" action="SQLsign.jsp" method="GET" enctype="multipart/form-data">
           <div class="grid grid-cols-3 gap-6">
             <div class="col-span-3 sm:col-span-2">
               <label for="apPat" class="block text-sm font-medium text-gray-700"> Apellido Paterno </label>
@@ -103,9 +103,9 @@
               </div>
             </div>
               <div class="col-span-3 sm:col-span-2">
-              <label for="apPat" class="block text-sm font-medium text-gray-700"> Apellido Materno </label>
+              <label for="apMat" class="block text-sm font-medium text-gray-700"> Apellido Materno </label>
               <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="text" name="apPat" id="apPat" required class=" rounded-lg focus:ring-indigo-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300" placeholder="Escriba su apellido materno">
+                <input type="text" name="apMat" id="apMat" required class=" rounded-lg focus:ring-indigo-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300" placeholder="Escriba su apellido materno">
               </div>
             </div>
               <div class="col-span-3 sm:col-span-2">
@@ -360,9 +360,15 @@
       <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">¡Reg&iacute;strate!</button>
   </div>
 </div>
-                <input type="hidden" id="name" values=''>
-                <input type="hidden" id="password" values=''>
-                <input type="hidden" id="email" values=''>
+        <%
+            String name = request.getParameter( "name" );
+            String password = request.getParameter( "password" );
+            String email = request.getParameter( "email" );           
+        %>
+        
+            <input type="hidden" id="name" values='<%=name%>'>
+            <input type="hidden" id="password" values='<%=password%>'>
+            <input type="hidden" id="email" values='<%=email%>'>
         </form>
       </div>
     </div>
