@@ -112,8 +112,8 @@
                 <!-- Toggle -->
                 <div class="relative mt-12 flex justify-center sm:mt-16">
                   <div class="bg-v1-teal-800 p-0.5 rounded-lg flex">
-                      <button type="button" class="relative bg-white py-2 px-6 border-white rounded-md shadow-sm text-sm font-medium text-teal-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="pricingVSm.jsp">Facturaci&oacute;n mensual</a></button>
-                    <button type="button" class="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-teal-600 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="pricingVSa.jsp">Facturaci&oacute;n anual</a></button>
+                      <button type="button" class="relative bg-white py-2 px-6 border-white rounded-md shadow-sm text-sm font-medium text-teal-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionM.jsp">Facturaci&oacute;n mensual</a></button>
+                      <button type="button" class="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-teal-600 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionA.jsp">Facturaci&oacute;n anual</a></button>
                   </div>
                 </div>
 

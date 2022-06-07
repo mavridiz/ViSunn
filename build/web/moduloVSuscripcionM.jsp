@@ -5,7 +5,7 @@
 <html class="h-full bg-gray-100">
     <head>
         <meta charset='utf-8'>
-        <title>Dieta</title>
+        <title>Suscripciones</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -202,7 +202,6 @@
       </nav>
     </div>
   </header>
-
   <!-- Bottom section -->
   <div class="min-h-0 flex-1 flex overflow-hidden">
     <!-- Narrow sidebar-->
@@ -241,7 +240,7 @@
           </svg>
         </a>
 
-          <a href="moduloVSdieta.jsp" class="bg-gray-900 text-white flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="moduloVSdieta.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Dieta</span>
           <!-- Heroicon name: outline/ban -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -265,24 +264,207 @@
       <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto lg:order-last">
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
+            <main>
+    <!-- Pricing section -->
+                <!-- Pricing section -->
+              <div class="relative bg-teal-500">
+                <!-- Overlapping background -->
+                <div aria-hidden="true" class="hidden absolute bg-teal-900 w-full h-6 bottom-0 lg:block"></div>
 
-<div class="bg-white min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-  <div class="max-w-max mx-auto">
-    <main class="sm:flex">
-      <p class="text-4xl font-extrabold text-teal-600 sm:text-5xl">404</p>
-      <div class="sm:ml-6">
-        <div class="sm:border-l sm:border-gray-200 sm:pl-6">
-            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">P&aacute;gina no encontrada</h1>
-          <p class="mt-1 text-base text-gray-500">Por favor, revise el link</p>
+                <div class="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
+                  <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+                    <span class="block lg:inline">Precios bajos,</span>
+                    <span class="block lg:inline">para gozar de los beneficios.</span>
+                  </h1>
+                  <p class="mt-4 text-xl text-indigo-100">Invertir en ti mismo es el mejor camino a la plenitud personal, y por eso te ofrecemos distintos planes que se adaptan a tus necesidades</p>
+                </div>
+
+                <h2 class="sr-only">Plans</h2>
+
+                <!-- Toggle -->
+                <div class="relative mt-12 flex justify-center sm:mt-16">
+                  <div class="bg-v1-teal-800 p-0.5 rounded-lg flex">
+                      <button type="button" class="relative bg-white py-2 px-6 border-white rounded-md shadow-sm text-sm font-medium text-teal-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionM.jsp">Facturaci&oacute;n mensual</a></button>
+                      <button type="button" class="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-teal-600 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionA.jsp">Facturaci&oacute;n anual</a></button>
+                  </div>
+                </div>
+
+                <!-- Cards -->
+                <div class="relative mt-8 max-w-2xl mx-auto px-4 pb-8 sm:mt-12 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-0">
+                  <!-- Decorative background -->
+                  <div aria-hidden="true" class="hidden absolute top-4 bottom-6 left-8 right-8 inset-0 bg-v1-teal-700 rounded-lg lg:block"></div>
+
+                  <div class="relative space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3">
+                    <div class="bg-v1-teal-700 lg:bg-transparent pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12">
+                      <div>
+                        <h3 class="text-white text-sm font-semibold uppercase tracking-wide">ViBasic</h3>
+                        <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-start">
+                          <div class="mt-3 flex items-center">
+                            <p class="text-white text-4xl font-extrabold tracking-tight">$0</p>
+                            <div class="ml-4">
+                              <p class="text-white text-sm">MXN / mes</p>
+                              <p class="text-indigo-200 text-sm">Factura Anual ($0)</p>
+                            </div>
+                          </div>
+                            <a href="#" class="bg-white text-teal-700 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViBasic</a>
+                        </div>
+                      </div>
+                      <h4 class="sr-only">Features</h4>
+                      <ul role="list" class="border-white divide-white divide-opacity-75 mt-7 border-t divide-y lg:border-t-0">
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-white ml-4 text-sm font-medium">Gratuito sin ningun cargo extra</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-white ml-4 text-sm font-medium">Utiliza funciones limitadas pero útiles de ViSunn</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-white ml-4 text-sm font-medium">Contiene anuncios</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-white ring-2 ring-teal-700 shadow-md pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12">
+                      <div>
+                        <h3 class="text-teal-600 text-sm font-semibold uppercase tracking-wide">ViPro</h3>
+                        <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-start">
+                          <div class="mt-3 flex items-center">
+                            <p class="text-teal-600 text-4xl font-extrabold tracking-tight">$49</p>
+                            <div class="ml-4">
+                              <p class="text-gray-700 text-sm">MXN / mes</p>
+                              <p class="text-gray-500 text-sm">Factura anual ($600)</p>
+                            </div>
+                          </div>
+                            <a href="#" class="bg-teal-600 text-white hover:bg-teal-800 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViPro</a>
+                        </div>
+                      </div>
+                      <h4 class="sr-only">Features</h4>
+                      <ul role="list" class="border-gray-200 divide-gray-200 mt-7 border-t divide-y lg:border-t-0">
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">¡Cancela cuando t&uacute; quieras!</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">Utiliza todas las funciones de ViSunn</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">Sin anuncios</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">Sugerencias +</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">Personaliza tus recetas</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-teal-500 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-gray-600 ml-4 text-sm font-medium">Crea hasta 5 rutinas</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-teal-700 lg:bg-transparent pt-6 px-6 pb-3 rounded-lg lg:px-8 lg:pt-12">
+                      <div>
+                        <h3 class="text-yellow-500 text-sm font-semibold uppercase tracking-wide">ViPro+</h3>
+                        <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-start">
+                          <div class="mt-3 flex items-center">
+                            <p class="text-yellow-500 text-4xl font-extrabold tracking-tight">$99</p>
+                            <div class="ml-4">
+                              <p class="text-yellow-500 text-sm">MXN / mes</p>
+                              <p class="text-yellow-500 text-sm">Factura anual ($1,188)</p>
+                            </div>
+                          </div>
+                            <a href="#" class="bg-white text-yellow-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViSunn+</a>
+                        </div>
+                      </div>
+                      <h4 class="sr-only">Features</h4>
+                      <ul role="list" class="border-white divide-white divide-opacity-75 mt-7 border-t divide-y lg:border-t-0">
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-yellow-500 ml-4 text-sm font-medium">Crea hasta 10 rutinas</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-yellow-500 ml-4 text-sm font-medium">Accedes a los ejercicios +</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-yellow-500 ml-4 text-sm font-medium">Recibe las noticias de Vigendy antes que todos</span>
+                        </li>
+
+                        <li class="py-3 flex items-center">
+                          <!-- Heroicon name: solid/check -->
+                          <svg class="text-indigo-200 w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                          </svg>
+                          <span class="text-yellow-500 ml-4 text-sm font-medium">Goza de todas las membres&iacute;as de las plataformas</span>
+                        </li>
+                      </ul>
+                    </div>                      
+                    </div>                     
+                </div>
+            </div>
         </div>
-        <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-            <a href="moduloVSinicio.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Regresa al inicio </a>
-            <a href="heroVS.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Cont&aacute;ctanos </a>
-        </div>
-      </div>
-    </main>
-  </div>
-</div>
+
+    <!-- Logo cloud -->
+
+
+    <!-- FAQs -->
+
+    <!-- Footer -->
+  </main>
+
 
       </section>
 

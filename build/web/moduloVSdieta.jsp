@@ -1,9 +1,11 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
     <head>
         <meta charset='utf-8'>
-        <title>Inicio</title>
+        <title>Dieta</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -26,17 +28,17 @@
       <div class="relative">
         <label for="inbox-select" class="sr-only">Choose inbox</label>
         <select id="inbox-select" class="rounded-md border-0 bg-none pl-3 pr-8 text-base font-medium text-gray-900 focus:ring-2 focus:ring-indigo-600">
-          <option selected>Open</option>
+          <option selected>Horario</option>
 
-          <option>Archive</option>
+          <option>Inicio</option>
 
-          <option>Customers</option>
+          <option>Progreso</option>
 
-          <option>Flagged</option>
+          <option>Sugerencias</option>
 
-          <option>Spam</option>
-
-          <option>Drafts</option>
+          <option>Suscripcion</option>
+          
+          
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
           <!-- Heroicon name: solid/chevron-down -->
@@ -81,22 +83,12 @@
             </a>
           </span>
 
-          <div class="relative inline-block text-left">
+          <div x-data="{ isOpen: false }" class="relative inline-block text-left">
             <button type="button" @click="isOpen = !isOpen" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
             </button>
 
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
             <div 
                 x-show="isOpen"
                     x-transition:enter="transition ease-out duration-100"
@@ -105,7 +97,7 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"                       
-                    class="origin-top-right absolute z-30 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
+                    class="origin-top-right absolute z-50 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0"> Mi perfil </a>
@@ -119,7 +111,7 @@
 
     <!-- Mobile menu, show/hide this `div` based on menu open/closed state -->
 
-    <div x-data="{ isOpen: false }" class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
+    <div  x-data="{ isOpen: false }" class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
       <!--
         Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -130,7 +122,15 @@
           From: "opacity-100"
           To: "opacity-0"
       -->
-      <div x-data="{ isOpen: false }" class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
+      <div 
+        x-show="isOpen"
+        x-transition:enter="transition-opacity ease-linear duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-opacity ease-linear duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+          class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
 
       <!--
         Mobile menu, toggle classes based on menu state.
@@ -142,12 +142,20 @@
           From: "transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
           To: "transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
       -->
-      <nav class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
+      <nav 
+        x-show="isOpen"
+        x-transition:enter="transition ease-out duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:enter-start="transform opacity-0 scale-110 sm:translate-x-full sm:scale-100 sm:opacity-100"
+        x-transition:enter-end="transform opacity-100 scale-100  sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave="transition ease-in duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:leave-start="transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave-end="transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
+          class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
         <div class="h-16 flex items-center justify-between px-4 sm:px-6">
           <a href="#">
-            <img class="block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500" alt="Workflow">
+              <img class="block h-8 w-auto" src="img/ViSunn.svg" alt="ViSunn">
           </a>
-          <button type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+          <button type="button" @click="isOpen = !isOpen" type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
             <span class="sr-only">Close main menu</span>
             <!-- Heroicon name: outline/x -->
             <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -157,24 +165,12 @@
         </div>
         <div class="mt-2 max-w-8xl mx-auto px-4 sm:px-6">
           <div class="relative text-gray-400 focus-within:text-gray-500">
-            <label for="mobile-search" class="sr-only">Search all inboxes</label>
-            <input id="mobile-search" type="search" placeholder="Search all inboxes" class="block w-full border-gray-300 rounded-md pl-10 placeholder-gray-500 focus:border-indigo-600 focus:ring-indigo-600">
             <div class="absolute inset-y-0 left-0 flex items-center justify-center pl-3">
-              <!-- Heroicon name: solid/search -->
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-              </svg>
             </div>
           </div>
         </div>
         <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4">
           <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Inboxes</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Technical Support</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Sales</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">General</a>
 
           <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Reporting</a>
 
@@ -253,7 +249,7 @@
             </svg>
         </a>
 
-          <a href="moduloVSuscripcion.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="moduloVSuscripcionM.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Suscripcion</span>
           <!-- Heroicon name: outline/pencil-alt -->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -269,71 +265,24 @@
       <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto lg:order-last">
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
-            <div class="bg-white">
-              <!-- Header -->
-              <div class="relative pb-32 bg-teal-900">
-                <div class="absolute inset-0">
-                </div>
-                <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-                  <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Bienvenido a ViSunn</h1>
-                  <p class="mt-6 max-w-3xl text-xl text-gray-300">¿Est&aacute; preparado para lograr el bienestar integral que tanto anhela?</p>
-                </div>
-              </div>
 
-              <!-- Overlapping cards -->
-              <section class="-mt-32 max-w-7xl mx-auto relative z-10 pb-32 px-4 sm:px-6 lg:px-8" aria-labelledby="contact-heading">
-                <h2 class="sr-only" id="contact-heading">Contact us</h2>
-                <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
-                  <div class="flex flex-col bg-white rounded-2xl shadow-xl">
-                    <div class="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-                      <div class="absolute top-0 p-5 inline-block bg-teal-600 rounded-xl shadow-lg transform -translate-y-1/2">
-                        <!-- Heroicon name: outline/phone -->
-                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                        </svg>
-                      </div>
-                      <h3 class="text-xl font-medium text-gray-900">Rutinas</h3>
-                      <p class="mt-4 text-base text-gray-500">Administra y optimiza tu tiempo, y no tienes necesidad de preocuparte de tus horas de sueño, nosotros la calculamos por ti</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu rutina<span aria-hidden="true"> &rarr;</span></a>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-col bg-white rounded-2xl shadow-xl">
-                    <div class="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-                      <div class="absolute top-0 p-5 inline-block bg-green-600 rounded-xl shadow-lg transform -translate-y-1/2">
-                        <!-- Heroicon name: outline/support -->
-                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                      </div>
-                      <h3 class="text-xl font-medium text-gray-900">Dieta</h3>
-                      <p class="mt-4 text-base text-gray-500">Gracias a nuestra cuidadosa selecci&oacute;n de recetas, podrás crear una dieta sana y balanceada.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu dieta<span aria-hidden="true"> &rarr;</span></a>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-col bg-white rounded-2xl shadow-xl">
-                    <div class="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-                      <div class="absolute top-0 p-5 inline-block bg-teal-600 rounded-xl shadow-lg transform -translate-y-1/2">
-                        <!-- Heroicon name: outline/newspaper -->
-                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h3 class="text-xl font-medium text-gray-900">Progreso</h3>
-                      <p class="mt-4 text-base text-gray-500">Nos compremetemos a marcar cambios, y que mejor manera de visualizarlo t&uacute; mismo.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Ver mi progreso<span aria-hidden="true"> &rarr;</span></a>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
+<div class="bg-white min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+  <div class="max-w-max mx-auto">
+    <main class="sm:flex">
+      <p class="text-4xl font-extrabold text-teal-600 sm:text-5xl">404</p>
+      <div class="sm:ml-6">
+        <div class="sm:border-l sm:border-gray-200 sm:pl-6">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">P&aacute;gina no encontrada</h1>
+          <p class="mt-1 text-base text-gray-500">Por favor, revise el link</p>
+        </div>
+        <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+            <a href="moduloVSinicio.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Regresa al inicio </a>
+            <a href="heroVS.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Cont&aacute;ctanos </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
 
       </section>
 

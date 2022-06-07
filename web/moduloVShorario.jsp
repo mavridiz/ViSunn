@@ -5,7 +5,7 @@
 <html class="h-full bg-gray-100">
     <head>
         <meta charset='utf-8'>
-        <title>Inicio</title>
+        <title>Horario</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -28,17 +28,17 @@
       <div class="relative">
         <label for="inbox-select" class="sr-only">Choose inbox</label>
         <select id="inbox-select" class="rounded-md border-0 bg-none pl-3 pr-8 text-base font-medium text-gray-900 focus:ring-2 focus:ring-indigo-600">
-          <option selected>Open</option>
+          <option selected>Horario</option>
 
-          <option>Archive</option>
+          <option>Inicio</option>
 
-          <option>Customers</option>
+          <option>Progreso</option>
 
-          <option>Flagged</option>
+          <option>Sugerencias</option>
 
-          <option>Spam</option>
-
-          <option>Drafts</option>
+          <option>Suscripcion</option>
+          
+          
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
           <!-- Heroicon name: solid/chevron-down -->
@@ -111,7 +111,7 @@
 
     <!-- Mobile menu, show/hide this `div` based on menu open/closed state -->
 
-    <div class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
+    <div  x-data="{ isOpen: false }" class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
       <!--
         Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -122,7 +122,15 @@
           From: "opacity-100"
           To: "opacity-0"
       -->
-      <div class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
+      <div 
+        x-show="isOpen"
+        x-transition:enter="transition-opacity ease-linear duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-opacity ease-linear duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+          class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
 
       <!--
         Mobile menu, toggle classes based on menu state.
@@ -134,12 +142,20 @@
           From: "transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
           To: "transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
       -->
-      <nav class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
+      <nav 
+        x-show="isOpen"
+        x-transition:enter="transition ease-out duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:enter-start="transform opacity-0 scale-110 sm:translate-x-full sm:scale-100 sm:opacity-100"
+        x-transition:enter-end="transform opacity-100 scale-100  sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave="transition ease-in duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:leave-start="transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave-end="transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
+          class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
         <div class="h-16 flex items-center justify-between px-4 sm:px-6">
           <a href="#">
               <img class="block h-8 w-auto" src="img/ViSunn.svg" alt="ViSunn">
           </a>
-          <button type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+          <button type="button" @click="isOpen = !isOpen" type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
             <span class="sr-only">Close main menu</span>
             <!-- Heroicon name: outline/x -->
             <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -233,7 +249,7 @@
             </svg>
         </a>
 
-          <a href="moduloVSuscripcion.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="moduloVSuscripcionM.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Suscripcion</span>
           <!-- Heroicon name: outline/pencil-alt -->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -251,7 +267,7 @@
         <!-- Your content -->
             <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex h-full flex-col">
-  <header class="relative z-40 flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
+  <header class="relative z-30 flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
     <h1 class="text-lg font-semibold text-gray-900">
         <%
             LocalDate date = LocalDate.now();
@@ -315,7 +331,7 @@
             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         </button>
-        <button type="button" class="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block">Today</button>
+        <button type="button" class="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block">Rutina 1</button>
         <span class="relative -mx-px h-5 w-px bg-gray-300 md:hidden"></span>
         <button type="button" class="flex items-center justify-center rounded-r-md border border-l-0 border-gray-300 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
           <span class="sr-only">Next month</span>
@@ -328,16 +344,9 @@
       <div class="hidden md:ml-4 md:flex md:items-center">
 
         <div class="ml-6 h-6 w-px bg-gray-300"></div>
-        <button type="button" class="ml-6 rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add event</button>
+        <button type="button" class="ml-6 rounded-md border border-transparent bg-green-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">A&ntilde;ade una actividad</button>
       </div>
       <div x-data="{ isOpen: false }" class="relative ml-6 md:hidden">
-        <button type="button" @click="isOpen = !isOpen" class="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
-          <span class="sr-only">Open menu</span>
-          <!-- Heroicon name: solid/dots-horizontal -->
-          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-          </svg>
-        </button>
 
         <!--
           Dropdown menu, show/hide based on menu state.
@@ -349,29 +358,7 @@
             From: "transform opacity-100 scale-100"
             To: "transform opacity-0 scale-95"
         -->
-        <div 
-            x-show="isOpen"
-              x-transition:enter="transition ease-out duration-100"
-              x-transition:enter-start="transform opacity-0 scale-95"
-              x-transition:enter-end="transform opacity-100 scale-100"
-              x-transition:leave="transition ease-in duration-75"
-              x-transition:leave-start="transform opacity-100 scale-100"
-              x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute right-0 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1">
-          <div class="py-1" role="none">
-            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-0">Create event</a>
-          </div>
-          <div class="py-1" role="none">
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-1">Go to today</a>
-          </div>
-          <div class="py-1" role="none">
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-2">Day view</a>
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-3">Week view</a>
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-4">Month view</a>
-            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-5">Year view</a>
-          </div>
-        </div>
+        
       </div>
     </div>
   </header>
@@ -379,37 +366,37 @@
     <div style="width: 165%" class="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
       <div class="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8">
         <div class="grid grid-cols-7 text-sm leading-6 text-gray-500 sm:hidden">
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">M <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">10</span></button>
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">T <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">11</span></button>
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">W <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">12</span></button>
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">T <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">13</span></button>
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">F <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">14</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">L <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">10</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">M <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">11</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">M <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">12</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">J <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">13</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">V <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">14</span></button>
           <button type="button" class="flex flex-col items-center pt-2 pb-3">S <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">15</span></button>
-          <button type="button" class="flex flex-col items-center pt-2 pb-3">S <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">16</span></button>
+          <button type="button" class="flex flex-col items-center pt-2 pb-3">D <span class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">16</span></button>
         </div>
 
         <div class="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid">
           <div class="col-end-1 w-14"></div>
           <div class="flex items-center justify-center py-3">
-            <span>Mon <span class="items-center justify-center font-semibold text-gray-900">10</span></span>
+            <span>Lun <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span>Tue <span class="items-center justify-center font-semibold text-gray-900">11</span></span>
+            <span>Mar <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span class="flex items-baseline">Wed <span class="ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">12</span></span>
+            <span class="flex items-baseline"> <span class="ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">Mie</span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span>Thu <span class="items-center justify-center font-semibold text-gray-900">13</span></span>
+            <span>Jue <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span>Fri <span class="items-center justify-center font-semibold text-gray-900">14</span></span>
+            <span>Vie <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span>Sat <span class="items-center justify-center font-semibold text-gray-900">15</span></span>
+            <span>Sab <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
           <div class="flex items-center justify-center py-3">
-            <span>Sun <span class="items-center justify-center font-semibold text-gray-900">16</span></span>
+            <span>Dom <span class="items-center justify-center font-semibold text-gray-900"></span></span>
           </div>
         </div>
       </div>
@@ -559,8 +546,133 @@
 
       </section>
       <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
-        <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
+        <div class="h-full relative p-7 flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
           <!-- Your content -->
+                      <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="flow-root">
+  <ul role="list" class="-mb-8">
+    <li>
+      <div class="relative pb-8">
+        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+        <div class="relative flex space-x-3">
+          <div>
+            <span class="h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+              <!-- Heroicon name: solid/user -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </div>
+          <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+            <div>
+              <p class="text-sm text-gray-500">Agregó la actividad:  <a href="#" class="font-medium text-gray-900">Desayuno</a></p>
+            </div>
+            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+              <time datetime="2020-09-20">Mayo 21</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="relative pb-8">
+        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+        <div class="relative flex space-x-3">
+          <div>
+            <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
+              <!-- Heroicon name: solid/thumb-up -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+              </svg>
+            </span>
+          </div>
+          <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+            <div>
+              <p class="text-sm text-gray-500">Empezó: <a href="#" class="font-medium text-gray-900">Ejercicio</a></p>
+            </div>
+            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+              <time datetime="2020-09-22">Mayo 24</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="relative pb-8">
+        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+        <div class="relative flex space-x-3">
+          <div>
+            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+              <!-- Heroicon name: solid/check -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </div>
+          <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+            <div>
+              <p class="text-sm text-gray-500">Completó con éxito: <a href="#" class="font-medium text-gray-900">Ejercicio</a></p>
+            </div>
+            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+              <time datetime="2020-09-28">Mayo 24</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="relative pb-8">
+        <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+        <div class="relative flex space-x-3">
+          <div>
+            <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
+              <!-- Heroicon name: solid/thumb-up -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+              </svg>
+            </span>
+          </div>
+          <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+            <div>
+              <p class="text-sm text-gray-500">Empezó: <a href="#" class="font-medium text-gray-900">Aseo Personal</a></p>
+            </div>
+            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+              <time datetime="2020-09-30">Mayo 31</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="relative pb-8">
+        <div class="relative flex space-x-3">
+          <div>
+            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+              <!-- Heroicon name: solid/check -->
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </div>
+          <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+            <div>
+              <p class="text-sm text-gray-500">Completó con éxito: <a href="#" class="font-medium text-gray-900">Aseo Personal</a></p>
+            </div>
+            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+              <time datetime="2020-10-04">Mayo 31</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+          </div>
         </div>
       </aside>
      

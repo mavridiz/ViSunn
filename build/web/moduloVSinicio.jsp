@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
@@ -16,8 +18,8 @@
   <header class="flex-shrink-0 relative h-16 bg-white flex items-center">
     <!-- Logo area -->
     <div class="absolute inset-y-0 left-0 md:static md:flex-shrink-0">
-      <a href="#" class="flex items-center justify-center h-16 w-16 bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-600 md:w-20">
-          <img class="h-12 w-auto" src="img/ViSunn.svg" alt="ViSunn">
+      <a href="#" class="flex items-center justify-center h-16 w-16 bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 md:w-20">
+          <img class="h-12 w-auto" src="img/ViSunn.svg" alt="Workflow">
       </a>
     </div>
 
@@ -26,17 +28,17 @@
       <div class="relative">
         <label for="inbox-select" class="sr-only">Choose inbox</label>
         <select id="inbox-select" class="rounded-md border-0 bg-none pl-3 pr-8 text-base font-medium text-gray-900 focus:ring-2 focus:ring-indigo-600">
-          <option selected>Open</option>
+          <option selected>Horario</option>
 
-          <option>Archive</option>
+          <option>Inicio</option>
 
-          <option>Customers</option>
+          <option>Progreso</option>
 
-          <option>Flagged</option>
+          <option>Sugerencias</option>
 
-          <option>Spam</option>
-
-          <option>Drafts</option>
+          <option>Suscripcion</option>
+          
+          
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
           <!-- Heroicon name: solid/chevron-down -->
@@ -81,7 +83,7 @@
             </a>
           </span>
 
-         <div x-data="{ isOpen: false }" class="relative inline-block text-left">
+          <div x-data="{ isOpen: false }" class="relative inline-block text-left">
             <button type="button" @click="isOpen = !isOpen" class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
@@ -109,7 +111,7 @@
 
     <!-- Mobile menu, show/hide this `div` based on menu open/closed state -->
 
-    <div class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
+    <div  x-data="{ isOpen: false }" class="fixed inset-0 z-40 md:hidden" role="dialog" aria-modal="true">
       <!--
         Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -120,7 +122,15 @@
           From: "opacity-100"
           To: "opacity-0"
       -->
-      <div class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
+      <div 
+        x-show="isOpen"
+        x-transition:enter="transition-opacity ease-linear duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-opacity ease-linear duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+          class="hidden sm:block sm:fixed sm:inset-0 sm:bg-gray-600 sm:bg-opacity-75" aria-hidden="true"></div>
 
       <!--
         Mobile menu, toggle classes based on menu state.
@@ -132,12 +142,20 @@
           From: "transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
           To: "transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
       -->
-      <nav class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
+      <nav 
+        x-show="isOpen"
+        x-transition:enter="transition ease-out duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:enter-start="transform opacity-0 scale-110 sm:translate-x-full sm:scale-100 sm:opacity-100"
+        x-transition:enter-end="transform opacity-100 scale-100  sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave="transition ease-in duration-150 sm:ease-in-out sm:duration-300"
+        x-transition:leave-start="transform opacity-100 scale-100 sm:translate-x-0 sm:scale-100 sm:opacity-100"
+        x-transition:leave-end="transform opacity-0 scale-110  sm:translate-x-full sm:scale-100 sm:opacity-100"
+          class="fixed z-40 inset-0 h-full w-full bg-white sm:inset-y-0 sm:left-auto sm:right-0 sm:max-w-sm sm:w-full sm:shadow-lg" aria-label="Global">
         <div class="h-16 flex items-center justify-between px-4 sm:px-6">
           <a href="#">
-            <img class="block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=500" alt="Workflow">
+              <img class="block h-8 w-auto" src="img/ViSunn.svg" alt="ViSunn">
           </a>
-          <button type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+          <button type="button" @click="isOpen = !isOpen" type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
             <span class="sr-only">Close main menu</span>
             <!-- Heroicon name: outline/x -->
             <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -147,24 +165,12 @@
         </div>
         <div class="mt-2 max-w-8xl mx-auto px-4 sm:px-6">
           <div class="relative text-gray-400 focus-within:text-gray-500">
-            <label for="mobile-search" class="sr-only">Search all inboxes</label>
-            <input id="mobile-search" type="search" placeholder="Search all inboxes" class="block w-full border-gray-300 rounded-md pl-10 placeholder-gray-500 focus:border-indigo-600 focus:ring-indigo-600">
             <div class="absolute inset-y-0 left-0 flex items-center justify-center pl-3">
-              <!-- Heroicon name: solid/search -->
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-              </svg>
             </div>
           </div>
         </div>
         <div class="max-w-8xl mx-auto py-3 px-2 sm:px-4">
           <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Inboxes</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Technical Support</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">Sales</a>
-
-          <a href="#" class="block rounded-md py-2 pl-5 pr-3 text-base font-medium text-gray-500 hover:bg-gray-100">General</a>
 
           <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100">Reporting</a>
 
@@ -188,9 +194,9 @@
             </a>
           </div>
           <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
-            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Your Profile</a>
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Mi perfil</a>
 
-            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Sign out</a>
+            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
           </div>
         </div>
       </nav>
@@ -243,7 +249,7 @@
             </svg>
         </a>
 
-          <a href="moduloVSuscripcion.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="moduloVSuscripcionM.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Suscripcion</span>
           <!-- Heroicon name: outline/pencil-alt -->
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
