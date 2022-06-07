@@ -1,3 +1,5 @@
+<%@page import="org.vigendy.helper.UsuarioHelper"%>
+<%@page import="org.vigendy.dao.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,12 +13,18 @@
 </html>
 
 <%
+    UsuarioHelper usuarioHelper = new UsuarioHelper();
+    
     if( request == null )
     {
         return;
     }
     else 
     {
-        
+        if ( new UsuarioHelper( ).addUsuario(request) )
+        {
+            response.sendRedirect("loginVS.jsp");
+        }
+
     }
 %>

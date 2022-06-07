@@ -3,7 +3,7 @@ create database ViSunn;
 use ViSunn;
 
 create table tblUsuario (idUsu int not null primary key AUTO_INCREMENT, nomUsu varchar(50) not null, aPatUsu varchar(50) not null,
-aMatUsu varchar(50) not null, fecNac date not null, pais varchar(20) not null, email varchar(30) not null, pw varchar(30) not null, peso float not null, altura float not null, fotoPP blob not null);
+aMatUsu varchar(50) not null, fecNac date not null, pais varchar(20) not null, email varchar(30) not null, pw varchar(30) not null, peso int not null, altura int not null, fotoPP blob not null);
 
 create table tblSuscripcion (idSus int not null primary key AUTO_INCREMENT, tipoSus varchar(20) not null);
 

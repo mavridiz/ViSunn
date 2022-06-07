@@ -1,3 +1,4 @@
+<%@page import="javax.xml.bind.ParseConversionEvent"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -94,10 +95,19 @@
         <p class="mt-1 text-sm text-gray-500">Esta informaci&oacute;n será utilizada para fines de la plataforma, as&iacute; que se lo m&aacute;s sincero posible</p>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-          <form class="space-y-6" action="SQLsign.jsp" method="GET" enctype="multipart/form-data">
-          <div class="grid grid-cols-3 gap-6">
+          <form class="space-y-6" action="SQLsign.jsp" method="GET">
+              <%
+                    String nombre = request.getParameter( "nombre" );                   
+                    String contra = request.getParameter( "contra" );
+                    String correo = request.getParameter( "correo" );
+              %>
+              
+              <input type="hidden" id="nomUsu" name="nomUsu" value='<%=nombre%>'>
+              <input type="hidden" id="contra" name="contra" value='<%=contra%>'>
+              <input type="hidden" id="correo" name="correo" value='<%=correo%>'>
+                        <div class="grid grid-cols-3 gap-6">
             <div class="col-span-3 sm:col-span-2">
-              <label for="apPat" class="block text-sm font-medium text-gray-700"> Apellido Paterno </label>
+                <label for="apPat" class="block text-sm font-medium text-gray-700"> Apellido Paterno</label>
               <div class="mt-1 flex rounded-md shadow-sm">
                   <input type="text" name="apPat" id="apPat" required class=" rounded-lg focus:ring-indigo-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300" placeholder="Escriba su apellido paterno">
               </div>
@@ -326,7 +336,7 @@
               <div class="col-span-3 sm:col-span-2">
               <label for="altura" class="block text-sm font-medium text-gray-700"> Altura </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
-                        <input type="number" name="peso" required id="peso" minlength="2" maxlength="4" min='10' max='230' required class="rounded-lg focus:ring-indigo-500 focus:border-indigo-500 valid:border-green-500 invalid:border-red-500 w-72 block sm:text-sm border-gray-300" placeholder="Introduzca su altura en cent&iacute;metros">
+                        <input type="number" name="altura" required id="altura" minlength="2" maxlength="4" min='10' max='230' required class="rounded-lg focus:ring-indigo-500 focus:border-indigo-500 valid:border-green-500 invalid:border-red-500 w-72 block sm:text-sm border-gray-300" placeholder="Introduzca su altura en cent&iacute;metros">
               </div>
             </div>
             <div class="col-span-3 sm:col-span-2">
@@ -359,16 +369,8 @@
       <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-300 duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><a href="heroVS.jsp">Cancelar</a></button>
       <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">¡Reg&iacute;strate!</button>
   </div>
-</div>
-        <%
-            String name = request.getParameter( "name" );
-            String password = request.getParameter( "password" );
-            String email = request.getParameter( "email" );           
-        %>
-        
-            <input type="hidden" id="name" values='<%=name%>'>
-            <input type="hidden" id="password" values='<%=password%>'>
-            <input type="hidden" id="email" values='<%=email%>'>
+</div>  
+
         </form>
       </div>
     </div>

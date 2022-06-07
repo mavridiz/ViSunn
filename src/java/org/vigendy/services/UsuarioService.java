@@ -61,7 +61,7 @@ public class UsuarioService
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO TBLUSUARIO () VALUES (?)";
+        String sql = "INSERT INTO TBLUSUARIO (NOMUSU,APATUSU,AMATUSU,FECNAC,PAIS,EMAIL,PW,PESO,ALTURA,FOTOPP) VALUES (?,?,?,?,?,?,?,?,?,?)";
         int row = 0;
         try 
         {
@@ -76,6 +76,16 @@ public class UsuarioService
                 return false;
             }
             preparedStatement.setString(1, usuario.getNomUsu());
+            preparedStatement.setString(2, usuario.getaPatUsu());
+            preparedStatement.setString(3, usuario.getaMatUsu());          
+            preparedStatement.setDate(4, new java.sql.Date(usuario.getFecNac().getTime()));
+            preparedStatement.setString(5, usuario.getPais());
+            preparedStatement.setString(6, usuario.getEmail());
+            preparedStatement.setString(7, usuario.getPw());
+            preparedStatement.setDouble(8, usuario.getPeso());
+            preparedStatement.setDouble(9, usuario.getAltura());
+            preparedStatement.setBlob(10, usuario.getFotoPP());
+            
             row = preparedStatement.executeUpdate();
             MySqlConnection.closeConnection(connection);
             return row == 1;

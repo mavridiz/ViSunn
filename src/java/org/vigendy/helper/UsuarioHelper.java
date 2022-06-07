@@ -5,6 +5,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +31,8 @@ public class UsuarioHelper implements Serializable{
     public boolean addUsuario( HttpServletRequest request ) throws ParseException, SQLException
     {
         usuario = new Usuario( ); 
-        usuario.setNomUsu( request.getParameter( "name" ));
-        if( usuario.getNomUsu()== null )
+        usuario.setNomUsu( request.getParameter( "nomUsu" ));
+        if( usuario.getNomUsu()== null || usuario.getNomUsu().length() == 0 )
         {
             return false;
         }
@@ -45,8 +46,7 @@ public class UsuarioHelper implements Serializable{
         {
             return false;
         }
-        Date fecnac = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter( "fecNac" ));
-        usuario.setFecNac(fecnac);
+        usuario.setFecNac(getDate(request.getParameter( "fecNac" )));
         if( usuario.getFecNac()== null )
         {
             return false;
@@ -55,20 +55,23 @@ public class UsuarioHelper implements Serializable{
         if( usuario.getPais()== null )
         {
             return false;
-        }
-        Float peso = Float.parseFloat(request.getParameter( "peso" ));        
-        usuario.setPeso(peso);
+        }    
+        usuario.setPeso(getInteger(request.getParameter( "peso" )));
         if( usuario.getPeso()== null )
         {
             return false;
         }
-        Float altura = Float.parseFloat(request.getParameter( "altura" ));  
-        usuario.setAltura(altura);
+        usuario.setEmail(request.getParameter( "correo" ));
+        if( usuario.getEmail()== null )
+        {
+            return false;
+        }
+        usuario.setAltura(getInteger(request.getParameter( "altura" )));
         if( usuario.getAltura()== null )
         {
             return false;
         }
-        if( request.getParameter( "password" ) == null )
+        if( request.getParameter( "contra" ) == null )
         {
             return false;
         }
@@ -76,13 +79,13 @@ public class UsuarioHelper implements Serializable{
         {
             return false;
         }
-        if (request.getParameter( "password" ) != request.getParameter( "conpassword" ))
+        if (!request.getParameter( "conpassword" ).equals(request.getParameter( "contra" )))
         {
             return false;
         }
         else
         {
-            usuario.setPw(request.getParameter( "password" ));
+            usuario.setPw(request.getParameter( "contra" ));
         }
         
         byte[] bytedata = request.getParameter( "fotoPP" ).getBytes();
@@ -91,6 +94,44 @@ public class UsuarioHelper implements Serializable{
         usuario.setFotoPP(Blobdata);
 
         return new UsuarioService().addUsuario(usuario);
+    }
+    
+    public Date getDate( String campo )
+    {
+        DateFormat dateFormat = null;
+        try
+        {
+            if (campo == null || campo.length() == 0)
+            {
+                return null;
+            }
+            dateFormat = new SimpleDateFormat( "yyyy-MM-dd" );
+            return dateFormat.parse(campo);
+        }
+        catch (ParseException ex)
+        {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    public Double getDouble( String campo )
+    {
+        Double val = 0.0;
+        if( campo == null || campo.length() == 0 )
+        {
+            return null;
+        }
+        try
+        {
+            val = new Double(campo);
+            return val;
+        }
+        catch(NumberFormatException ex)
+        {
+            ex.printStackTrace();
+        }
+        return null;
     }
     
     public Integer getInteger( String campo )

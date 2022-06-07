@@ -13,8 +13,8 @@ public class Usuario implements Serializable{
     private Date fecNac;
     private String pais;
     private String email;
-    private Float peso;
-    private Float altura;
+    private Integer peso;
+    private Integer altura;
     private String pw;
     private Blob fotoPP;
  
@@ -77,19 +77,19 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public Float getPeso() {
+    public Integer getPeso() {
         return peso;
     }
 
-    public void setPeso(Float peso) {
+    public void setPeso(Integer peso) {
         this.peso = peso;
     }
 
-    public Float getAltura() {
+    public Integer getAltura() {
         return altura;
     }
 
-    public void setAltura(Float altura) {
+    public void setAltura(Integer altura) {
         this.altura = altura;
     }
 

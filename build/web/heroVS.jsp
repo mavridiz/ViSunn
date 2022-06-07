@@ -164,21 +164,21 @@
                   <div class="mt-6">
                       <form action="signupVS.jsp" method="GET" class="space-y-6">
                       <div>
-                        <label for="name" class="sr-only">Nombre</label>
-                        <input type="text" name="name" id="name" autocomplete="name" placeholder="Nombre" required class="block w-full shadow-sm focus:ring-indigo-500 focus:border-green-500 sm:text-sm border-gray-300 rounded-md">
+                        <label for="nombre" class="sr-only">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" autocomplete="name" placeholder="Nombre" required class="block w-full shadow-sm focus:ring-indigo-500 focus:border-green-500 sm:text-sm border-gray-300 rounded-md">
                         
                       </div>
   
                       <div>
-                        <label for="email" class="sr-only">Correo electr&oacute;nico</label>
-                        <input type="email" name="email" id="email" autocomplete="email" placeholder="Correo electr&oacute;nico" required class="peer block w-full shadow-sm focus:ring-green-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
+                        <label for="correo" class="sr-only">Correo electr&oacute;nico</label>
+                        <input type="email" name="correo" id="correo" autocomplete="email" placeholder="Correo electr&oacute;nico" required class="peer block w-full shadow-sm focus:ring-green-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
                         <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
                             Escriba un correo electr&oacute;nico v&aacute;lido.</p>
                       </div>
   
                       <div>
-                        <label for="password" class="sr-only">Contrase&ntilde;a</label>
-                        <input id="password" name="password" minlength="6" maxlength="30" type="password" placeholder="Contrase&ntilde;a" autocomplete="current-password" required class="peer block w-full shadow-sm focus:ring-indigo-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
+                        <label for="contra" class="sr-only">Contrase&ntilde;a</label>
+                        <input id="contra" name="contra" minlength="6" maxlength="30" type="password" placeholder="Contrase&ntilde;a" autocomplete="current-password" required class="peer block w-full shadow-sm focus:ring-indigo-500 valid:border-green-500 invalid:border-red-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
                         <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
                             Escriba una contrase&ntilde;a v&aacute;lida.</p>
                       </div>
