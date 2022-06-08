@@ -11,10 +11,6 @@
     <link rel='stylesheet' href='components-v2.css'>  
 </head>
 
-<%
-    
-%>
-
 <body class="h-full">
 <div class="relative bg-gray-800 overflow-hidden">
     <div class="hidden sm:block sm:absolute sm:inset-0" aria-hidden="true">

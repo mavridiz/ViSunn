@@ -1,3 +1,5 @@
+<%@page import="java.sql.Date"%>
+<%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,6 +13,14 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel='stylesheet' href='app.css'>
         <link rel='stylesheet' href='components-v2.css'>
+        <%
+            HttpSession mysession= (HttpSession) request.getSession( false);
+            Usuario user = (Usuario) mysession.getAttribute("usr");
+            if (user == null)
+            {
+                response.sendRedirect("heroVS.jsp");
+            }
+        %>        
     </head>
     <body class="h-full overflow-hidden">
 <div class="h-full flex flex-col">
@@ -70,7 +80,7 @@
       </div>
       <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
         <nav aria-label="Global" class="flex space-x-10">
-            <a href="#" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
+            <a href="settingsVS.jsp" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
         </nav>
         <div class="flex items-center space-x-8">
           <span class="inline-flex">
@@ -101,7 +111,7 @@
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0"> Mi perfil </a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
+                <a href="signout.jsp" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
               </div>
             </div>
           </div>
@@ -196,7 +206,7 @@
           <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
             <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Mi perfil</a>
 
-            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
+            <a href="signout.jsp" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
           </div>
         </div>
       </nav>
@@ -284,7 +294,8 @@
                 <!-- Toggle -->
                 <div class="relative mt-12 flex justify-center sm:mt-16">
                   <div class="bg-v1-teal-800 p-0.5 rounded-lg flex">
-                      <button type="button" class="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-teal-600 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionM.jsp">Facturaci&oacute;n mensual</a></button>
+                      <button type="button" class="ml-0.5 relative py-2 px-6 border border-transparent rounded-md text-sm font-medium text-indigo-200 whitespace-nowrap hover:bg-teal-600 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionM.jsp">Facturaci&oacute;n mensual</a>
+                      </button>
                       <button type="button" class="relative bg-white py-2 px-6 border-white rounded-md shadow-sm text-sm font-medium text-teal-700 whitespace-nowrap hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-teal-700 focus:z-10"><a href="moduloVSuscripcionA.jsp">Facturaci&oacute;n anual</a></button>                    
                   </div>
                 </div>
@@ -305,7 +316,13 @@
                               <p class="text-white text-sm">MXN / anual</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-white text-teal-700 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViBasic</a>
+                            <form action="SQLsus.jsp">
+                            <button class="bg-white text-teal-700 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="1">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                Suscr&iacute;bete a ViBasic
+                            </button>
+                                </form>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>

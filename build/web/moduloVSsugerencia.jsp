@@ -1,3 +1,4 @@
+<%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,6 +12,14 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel='stylesheet' href='app.css'>
         <link rel='stylesheet' href='components-v2.css'>
+        <%
+            HttpSession mysession= (HttpSession) request.getSession( false);
+            Usuario user = (Usuario) mysession.getAttribute("usr");
+            if (user == null)
+            {
+                response.sendRedirect("heroVS.jsp");
+            }
+        %>
     </head>
     <body class="h-full overflow-hidden">
 <div class="h-full flex flex-col">
@@ -70,7 +79,7 @@
       </div>
       <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
         <nav aria-label="Global" class="flex space-x-10">
-            <a href="#" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
+            <a href="settingsVS.jsp" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
         </nav>
         <div class="flex items-center space-x-8">
           <span class="inline-flex">
@@ -101,7 +110,7 @@
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0"> Mi perfil </a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
+                <a href="signout.jsp" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
               </div>
             </div>
           </div>
@@ -196,7 +205,7 @@
           <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
             <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Mi perfil</a>
 
-            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
+            <a href="signout.jsp" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
           </div>
         </div>
       </nav>
@@ -275,7 +284,7 @@
                   <img class="max-h-12 px-6" src="img/dolor1.png" alt="">
                   <br>
                   <p class="text-gray-800 text-lg font-semibold">
-                    Exeso de ejercicio
+                    Exceso de ejercicio
                     <br>
                 </p>
                   <p class="text-gray-700 text-sm">

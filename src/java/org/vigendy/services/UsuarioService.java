@@ -165,12 +165,12 @@ public class UsuarioService
         return null;
     }
     
-    public Usuario getUsuarioByNom( String nom )
+    public Usuario getUsuarioByCorreo( String correo )
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "SELECT * FROM TBLUSUARIO WHERE NOMPROVEEDOR = ?";
+        String sql = "SELECT * FROM TBLUSUARIO WHERE email = ?";
         Usuario usuario = null;
         try 
         {
@@ -180,7 +180,7 @@ public class UsuarioService
                 return null;
             }
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nom );
+            preparedStatement.setString(1, correo );
             resultSet = preparedStatement.executeQuery( );
             if( resultSet == null )
             {
@@ -191,7 +191,16 @@ public class UsuarioService
                 usuario = new Usuario();
                 usuario.setIdUsu(resultSet.getInt(1) );
                 usuario.setNomUsu(resultSet.getString(2) );
-            }
+                usuario.setaPatUsu(resultSet.getString(3) );
+                usuario.setaMatUsu(resultSet.getString(4) );
+                usuario.setFecNac(resultSet.getDate(5) );
+                usuario.setPais(resultSet.getString(6) );
+                usuario.setEmail(resultSet.getString(7) );
+                usuario.setPw(resultSet.getString(8) );
+                usuario.setPeso(resultSet.getInt(9) );
+                usuario.setAltura(resultSet.getInt(10) );
+                usuario.setFotoPP(resultSet.getBlob(11) );
+            } 
             resultSet.close();
             MySqlConnection.closeConnection(connection);
             return usuario;

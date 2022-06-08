@@ -11,9 +11,8 @@ public class relSusUsu implements Serializable{
     private Date fecIni;
     private Date fecFin;
 
-    public relSusUsu(Usuario idUsu, Suscripcion idSus) {
-        this.idUsu = idUsu;
-        this.idSus = idSus;
+    public relSusUsu() {
+
     }
 
     public Integer getIdSusUsu() {

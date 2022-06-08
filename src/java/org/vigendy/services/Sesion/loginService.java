@@ -46,6 +46,7 @@ public class loginService{
     
     public boolean VerifyPassword (String correo, String password)
     {
+        String contra = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -64,11 +65,17 @@ public class loginService{
             {
                 return false;
             }
-            if(password.equals(resultSet.getString(3)))
+            while( resultSet.next() )
             {
-                return true;
+                contra  = resultSet.getString(3);
+                resultSet.close();
+                if(password.equals(contra))
+                {
+                    
+                    return true;
+                }             
             }
-            resultSet.close();
+            
             MySqlConnection.closeConnection(connection);
         } 
         catch (SQLException ex) 

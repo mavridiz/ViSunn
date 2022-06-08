@@ -1,3 +1,4 @@
+<%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,6 +12,14 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel='stylesheet' href='app.css'>
         <link rel='stylesheet' href='components-v2.css'>
+        <%
+            HttpSession mysession= (HttpSession) request.getSession( false);
+            Usuario user = (Usuario) mysession.getAttribute("usr");
+            if (user == null)
+            {
+                response.sendRedirect("heroVS.jsp");
+            }
+        %>
     </head>
     <body class="h-full overflow-hidden">
 <div class="h-full flex flex-col">
@@ -70,7 +79,7 @@
       </div>
       <div class="ml-10 pr-4 flex-shrink-0 flex items-center space-x-10">
         <nav aria-label="Global" class="flex space-x-10">
-            <a href="#" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
+            <a href="settingsVS.jsp" class="text-sm font-medium text-gray-900">Configuraci&oacute;n</a>
         </nav>
         <div class="flex items-center space-x-8">
           <span class="inline-flex">
@@ -101,7 +110,7 @@
               <div class="py-1" role="none">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-0"> Mi perfil </a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
+                <a href="signout.jsp" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-0-item-1"> Cerrar sesi&oacute;n </a>
               </div>
             </div>
           </div>
@@ -196,7 +205,7 @@
           <div class="mt-3 max-w-8xl mx-auto px-2 space-y-1 sm:px-4">
             <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Mi perfil</a>
 
-            <a href="#" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
+            <a href="signout.jsp" class="block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-50">Cerrar sesi&oacute;n</a>
           </div>
         </div>
       </nav>
@@ -270,8 +279,9 @@
               <div class="relative pb-32 bg-teal-900">
                 <div class="absolute inset-0">
                 </div>
+                  
                 <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-                  <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Bienvenido a ViSunn</h1>
+                  <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Bienvenido a ViSunn,  <%=user.getNomUsu()%></h1>
                   <p class="mt-6 max-w-3xl text-xl text-gray-300">¿Est&aacute; preparado para lograr el bienestar integral que tanto anhela?</p>
                 </div>
               </div>
@@ -292,7 +302,7 @@
                       <p class="mt-4 text-base text-gray-500">Administra y optimiza tu tiempo, y no tienes necesidad de preocuparte de tus horas de sueño, nosotros la calculamos por ti</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu rutina<span aria-hidden="true"> &rarr;</span></a>
+                        <a href="moduloVShorario.jsp" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu rutina<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                   </div>
 
@@ -308,7 +318,7 @@
                       <p class="mt-4 text-base text-gray-500">Gracias a nuestra cuidadosa selecci&oacute;n de recetas, podrás crear una dieta sana y balanceada.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu dieta<span aria-hidden="true"> &rarr;</span></a>
+                        <a href="moduloVSdieta.jsp" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Crea tu dieta<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                   </div>
 
@@ -324,7 +334,7 @@
                       <p class="mt-4 text-base text-gray-500">Nos compremetemos a marcar cambios, y que mejor manera de visualizarlo t&uacute; mismo.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                      <a href="#" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Ver mi progreso<span aria-hidden="true"> &rarr;</span></a>
+                        <a href="moduloVSprogreso.jsp" class="text-base font-medium text-green-600 hover:text-green-800 duration-300">Ver mi progreso<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                   </div>
                 </div>

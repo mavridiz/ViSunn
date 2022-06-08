@@ -66,7 +66,7 @@
         </div>
 
         <div class="mt-6">
-          <form action="#" method="GET" class="space-y-6" onsubmit="submitForm(event)">
+            <form action="SQLlogin.jsp" method="GET" class="space-y-6">
             <div>
               <label for="correo" class="block text-sm font-medium text-gray-700"> Correo electr&oacute;nico </label>
               <div class="mt-1">

@@ -204,14 +204,14 @@ public class UsuarioHelper implements Serializable{
         return new UsuarioService().getUsuarioById( id );
     }
     
-    public Usuario getUsuarioByNom(HttpServletRequest request) {
+    public Usuario getUsuarioByCorreo(HttpServletRequest request) {
         Usuario usuario = null;
-        String nom = null;
-        nom = (request.getParameter("nomUsuario"));
-        if (nom == null) {
+        String correo = null;
+        correo = (request.getParameter("correo"));
+        if (correo == null) {
             return null;
         }
-        return new UsuarioService().getUsuarioByNom(nom);
+        return new UsuarioService().getUsuarioByCorreo(correo);
     }
     
     public void setList(List<Usuario> list) 
