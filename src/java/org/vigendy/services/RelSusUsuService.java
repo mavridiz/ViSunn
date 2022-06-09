@@ -7,6 +7,7 @@ package org.vigendy.services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -104,4 +105,45 @@ public class RelSusUsuService {
         }
         return false;
     }    
+    
+        public relSusUsu getRelById( Integer IdUsu )
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM RELSUSUSU WHERE IDUSU = ?";
+        relSusUsu rel = null;
+        try 
+        {
+            connection = MySqlConnection.getConnection( );
+            if( connection == null )
+            {
+                return null;
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, IdUsu );
+            resultSet = preparedStatement.executeQuery( );
+            if( resultSet == null )
+            {
+                return null;
+            }
+            while( resultSet.next() )
+            {
+                rel = new relSusUsu();
+                rel.setIdSusUsu(resultSet.getInt(1) );
+                rel.getIdUsu().setIdUsu(resultSet.getInt(2) );
+                rel.getIdSus().setIdSus(resultSet.getInt(3) );
+                rel.setFecIni(resultSet.getDate(4) );
+                rel.setFecFin(resultSet.getDate(5) );
+            } 
+            resultSet.close();
+            MySqlConnection.closeConnection(connection);
+            return rel;
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

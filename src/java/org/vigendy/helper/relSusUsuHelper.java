@@ -9,8 +9,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
+import org.vigendy.dao.Usuario;
 import org.vigendy.dao.relSusUsu;
 import org.vigendy.services.RelSusUsuService;
+import org.vigendy.services.UsuarioService;
 
 public class relSusUsuHelper implements Serializable{
     
@@ -51,6 +53,17 @@ public class relSusUsuHelper implements Serializable{
         return new RelSusUsuService().updateRelacion(getInteger(request.getParameter( "IDusu" )), getInteger(request.getParameter( "IDtipo" )), request.getParameter( "Tipo" ));
     }
     
+    public relSusUsu getRelById( HttpServletRequest request )
+    {
+        relSusUsu rel = null;
+        Integer id = null;
+        id = getInteger( request.getParameter( "idUsu" ) );
+        if( id == null )
+        {
+            return null;
+        }
+        return new RelSusUsuService().getRelById(id );
+    }
         
         
         public Date SA ( Date fecha )

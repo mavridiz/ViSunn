@@ -1,3 +1,5 @@
+<%@page import="org.vigendy.helper.relSusUsuHelper"%>
+<%@page import="org.vigendy.dao.relSusUsu"%>
 <%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
@@ -13,12 +15,14 @@
         <link rel='stylesheet' href='app.css'>
         <link rel='stylesheet' href='components-v2.css'>
         <%
-            HttpSession mysession= (HttpSession) request.getSession( false);
+            HttpSession mysession= (HttpSession) request.getSession( false );
+            
             Usuario user = (Usuario) mysession.getAttribute("usr");
             if (user == null)
             {
                 response.sendRedirect("heroVS.jsp");
             }
+            mysession.setAttribute("rel",rel);
         %>        
     </head>
     <body class="h-full overflow-hidden">
@@ -468,7 +472,14 @@
       <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
         <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
           <!-- Your content -->
-          
+          <div class="h-full p-5">
+              <p class="text-2xl font-medium tracking-tight text-black">Tu suscripci&oacute;n:</p>
+              <%
+                  String tipoSus = "";
+                  if()
+              
+              %>
+              <h2 class="text-4xl font-extrabold tracking-tight text-black md:text-5xl lg:text-6xl"></h2>
         </div>
       </aside>
     </main>

@@ -1,3 +1,5 @@
+<%@page import="org.vigendy.helper.relSusUsuHelper"%>
+<%@page import="org.vigendy.dao.relSusUsu"%>
 <%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="org.vigendy.helper.UsuarioHelper"%>
 <%@page import="org.vigendy.helper.Sesion.loginHelper"%>
@@ -16,8 +18,8 @@
     <body class="p-6 m-6">
         <h1 class="text-4xl font-extrabold tracking-tight text-black md:text-5xl lg:text-6xl">Algo sali&oacute; mal!</h1>
         <%
-                loginHelper loginhelper = new loginHelper();
-                UsuarioHelper usuarioHelper = new UsuarioHelper();
+            relSusUsuHelper relhelper = new relSusUsuHelper();
+            UsuarioHelper usuarioHelper = new UsuarioHelper();
                String mensaje = "";
                
                if( new loginHelper().VerifyCorreo(request) == false )
@@ -38,7 +40,7 @@
                     else 
                     {
                         HttpSession mysession = request.getSession(true);
-                        Usuario user = usuarioHelper.getUsuarioByCorreo(request);            
+                        Usuario user = usuarioHelper.getUsuarioByCorreo(request);   
                         mysession = request.getSession();
                         mysession.setAttribute("usr",user);
                         response.sendRedirect("moduloVSinicio.jsp");

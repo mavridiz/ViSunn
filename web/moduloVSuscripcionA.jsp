@@ -274,10 +274,7 @@
       <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto lg:order-last">
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
-                <!-- Your content -->
-            <!-- Pricing section -->
-                <!-- Pricing section -->
-              <div class="relative bg-teal-500">
+<div class="relative bg-teal-500">
                 <!-- Overlapping background -->
                 <div aria-hidden="true" class="hidden absolute bg-teal-900 w-full h-6 bottom-0 lg:block"></div>
 
@@ -484,6 +481,7 @@
                     </div>                     
                 </div>
             </div>
+              
       </section>
 
       <!-- Secondary column (hidden on smaller screens) -->

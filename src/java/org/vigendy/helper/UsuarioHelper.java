@@ -205,7 +205,6 @@ public class UsuarioHelper implements Serializable{
     }
     
     public Usuario getUsuarioByCorreo(HttpServletRequest request) {
-        Usuario usuario = null;
         String correo = null;
         correo = (request.getParameter("correo"));
         if (correo == null) {
