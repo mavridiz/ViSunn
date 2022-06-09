@@ -25,9 +25,34 @@ public class relSusUsuHelper implements Serializable{
         {
             return false;
         }
-        return new RelSusUsuService().addRelacion(rel, getInteger(request.getParameter( "IDusu" )), getInteger(request.getParameter( "IDtipo" )));
+        if( request.getParameter( "Tipo" ) == null || (request.getParameter( "Tipo" )).length() == 0 )
+        {
+            return false;
+        }
+        return new RelSusUsuService().RelacionInicial(rel, getInteger(request.getParameter( "IDusu" )), getInteger(request.getParameter( "IDtipo" )),request.getParameter( "Tipo" ));
     }
     
+    public boolean updateRel( HttpServletRequest request ) throws ParseException, SQLException
+    {
+        relSusUsu rel = new relSusUsu( );
+        if( request.getParameter( "IDusu" )== null || getInteger(request.getParameter( "IDusu" )) == 0 )
+        {
+            return false;
+        }
+        if( request.getParameter( "IDtipo" ) == null || getInteger(request.getParameter( "IDtipo" )) == 0 )
+        {
+            return false;
+        }
+        if( request.getParameter( "Tipo" ) == null || (request.getParameter( "Tipo" )).length() == 0 )
+        {
+            return false;
+        }
+        
+        return new RelSusUsuService().updateRelacion(getInteger(request.getParameter( "IDusu" )), getInteger(request.getParameter( "IDtipo" )), request.getParameter( "Tipo" ));
+    }
+    
+        
+        
         public Date SA ( Date fecha )
         {
             Calendar calendar = Calendar.getInstance();

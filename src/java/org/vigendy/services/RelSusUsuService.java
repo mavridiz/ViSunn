@@ -17,7 +17,7 @@ import org.vigendy.helper.relSusUsuHelper;
 
 public class RelSusUsuService {
     
-        public boolean addRelacion ( relSusUsu rel, Integer usu, Integer sub )
+        public boolean RelacionInicial ( relSusUsu rel, Integer usu, Integer sub, String tipo )
     {
         relSusUsuHelper helper = new relSusUsuHelper();
         Connection connection = null;
@@ -41,7 +41,7 @@ public class RelSusUsuService {
             
             Calendar cal = Calendar.getInstance();
             Calendar calendario = Calendar.getInstance();
-            calendario.add(Calendar.YEAR, 1);
+            calendario.add(Calendar.YEAR, 99);
             Date date = cal.getTime();
             Date year = calendario.getTime();
             
@@ -57,4 +57,51 @@ public class RelSusUsuService {
         }
         return false;
     }  
+        
+    public boolean updateRelacion ( Integer usu, Integer sub, String dur )
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "update RELSUSUSU SET IDSUS = ?, FECINI = ?, FECFIN = ? WHERE IDUSU= ?;";
+        int row = 0;
+        try 
+        {
+            connection = MySqlConnection.getConnection( );
+            if( connection == null )
+            {
+                return false;
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            if( preparedStatement == null )
+            {
+                return false;
+            }
+            preparedStatement.setInt(4, usu);
+            preparedStatement.setInt(1, sub); 
+            
+            Calendar cal = Calendar.getInstance();
+            Calendar calendario = Calendar.getInstance();
+            
+            if(dur.equals("year")){
+                calendario.add(Calendar.YEAR, 1);
+            }
+            else{
+                calendario.add(Calendar.MONTH, 1);
+            }
+            
+            Date date = cal.getTime();
+            Date year = calendario.getTime();
+            
+            preparedStatement.setDate(2, new java.sql.Date(date.getTime()));   
+            preparedStatement.setDate(3, new java.sql.Date(year.getTime()));  
+            row = preparedStatement.executeUpdate();
+            MySqlConnection.closeConnection(connection);
+            return row == 1;
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }    
 }

@@ -33,7 +33,7 @@
     }
     else 
     {
-        if ( new relSusUsuHelper().addRel(request) )
+        if ( new relSusUsuHelper().updateRel(request) )
         {
             response.sendRedirect("moduloVSuscripcionM.jsp");
         }

@@ -85,15 +85,16 @@
             <div class="flex items-center justify-between">
               <div class="flex items-center">
                 <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                  <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Recu&eacute;rdame </label>
+                <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Recu&eacute;rdame </label>
               </div>
 
               <div class="text-sm">
-                 <a href="#" class="font-medium text-green-600 hover:text-green-500"> Olvidaste tu contraseña? </a>
+                <a href="#" class="font-medium text-green-600 hover:text-green-500"> Olvidaste tu contraseña? </a>
               </div>
             </div>
+                <p>¿No est&aacute;s registrado? <a href="heroVS.jsp" class="font-medium text-green-700 hover:underline">Registrate ahora!</a></p>
             <div>
-              <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-700 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Inicia sesi&oacute;n</button>
+              <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Inicia sesi&oacute;n</button>
             </div>
           </form>
         </div>
@@ -101,8 +102,8 @@
     </div>
   </div>
   <div class="hidden lg:block relative w-0 flex-1">
-      <img class="absolute inset-0 h-full w-full object-cover" src="img/alimentos.jpg" alt="">
+      <img class="absolute inset-0 h-full w-full object-cover" src="img/alimentos.jpg" alt="welcomeForm">
   </div>
 </div>
-    </body>
+</body>
 </html>

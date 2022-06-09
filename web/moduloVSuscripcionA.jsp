@@ -1,4 +1,3 @@
-<%@page import="java.sql.Date"%>
 <%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
@@ -7,7 +6,7 @@
 <html class="h-full bg-gray-100">
     <head>
         <meta charset='utf-8'>
-        <title>Suscripciones</title>
+        <title>Horario</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -20,7 +19,7 @@
             {
                 response.sendRedirect("heroVS.jsp");
             }
-        %>        
+        %>
     </head>
     <body class="h-full overflow-hidden">
 <div class="h-full flex flex-col">
@@ -235,7 +234,7 @@
         </svg>
         </a>
 
-          <a href="moduloVShorario.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
+          <a href="moduloVShorario.jsp" class="bg-gray-900 text-white flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Horario</span>
           <!-- Heroicon name: outline/user-circle -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -275,6 +274,7 @@
       <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto lg:order-last">
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
+                <!-- Your content -->
             <!-- Pricing section -->
                 <!-- Pricing section -->
               <div class="relative bg-teal-500">
@@ -320,9 +320,10 @@
                             <button class="bg-white text-teal-700 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
                                 <input type="hidden" name="IDtipo" id="IDtipo" value="1">
                                 <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="Tipo" value="year">
                                 Suscr&iacute;bete a ViBasic
                             </button>
-                                </form>
+                           </form>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -363,7 +364,14 @@
                                 <p class="text-gray-700 text-sm">MXN / anual</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-teal-600 text-white hover:bg-teal-800 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViPro</a>
+                          <form action="SQLsus.jsp">
+                            <button class="bg-teal-600 text-white hover:bg-teal-800 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="2">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="IDtipo" value="year">
+                                Suscr&iacute;bete a ViPro
+                            </button>
+                           </form>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -428,7 +436,14 @@
                               <p class="text-yellow-500 text-sm">MXN / anual</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-white text-yellow-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViSunn+</a>
+                            <form action="SQLsus.jsp">
+                            <button class="bg-white text-yellow-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="3">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="Tipo" value="year">
+                                Suscr&iacute;bete a ViPro+
+                            </button>
+                           </form>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -469,21 +484,15 @@
                     </div>                     
                 </div>
             </div>
-        </div>
-
-    <!-- Logo cloud -->
-
-
-    <!-- FAQs -->
-    
-    <!-- Footer -->
-   
-  </main>
-</div>
-
       </section>
 
-     
+      <!-- Secondary column (hidden on smaller screens) -->
+      <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
+        <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
+          <!-- Your content -->
+          
+        </div>
+      </aside>
     </main>
   </div>
 </div>

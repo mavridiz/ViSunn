@@ -273,10 +273,7 @@
       <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-y-auto lg:order-last">
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
-            <main>
-    <!-- Pricing section -->
-                <!-- Pricing section -->
-              <div class="relative bg-teal-500">
+<div class="relative bg-teal-500">
                 <!-- Overlapping background -->
                 <div aria-hidden="true" class="hidden absolute bg-teal-900 w-full h-6 bottom-0 lg:block"></div>
 
@@ -464,20 +461,16 @@
                     </div>                     
                 </div>
             </div>
-        </div>
-
-    <!-- Logo cloud -->
-
-
-    <!-- FAQs -->
-
-    <!-- Footer -->
-  </main>
-
-
+              
       </section>
 
-     
+      <!-- Secondary column (hidden on smaller screens) -->
+      <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
+        <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
+          <!-- Your content -->
+          
+        </div>
+      </aside>
     </main>
   </div>
 </div>
