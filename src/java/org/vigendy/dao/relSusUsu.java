@@ -6,8 +6,8 @@ import java.util.Date;
 public class relSusUsu implements Serializable{
     
     private Integer idSusUsu;
-    private Usuario idUsu;
-    private Suscripcion idSus;
+    private Integer idUsu;
+    private Integer idSus;
     private Date fecIni;
     private Date fecFin;
 
@@ -23,19 +23,19 @@ public class relSusUsu implements Serializable{
         this.idSusUsu = idSusUsu;
     }
 
-    public Usuario getIdUsu() {
+    public Integer getIdUsu() {
         return idUsu;
     }
 
-    public void setIdUsu(Usuario idUsu) {
+    public void setIdUsu(Integer idUsu) {
         this.idUsu = idUsu;
     }
 
-    public Suscripcion getIdSus() {
+    public Integer getIdSus() {
         return idSus;
     }
 
-    public void setIdSus(Suscripcion idSus) {
+    public void setIdSus(Integer idSus) {
         this.idSus = idSus;
     }
 

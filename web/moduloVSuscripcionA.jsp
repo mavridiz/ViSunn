@@ -1,3 +1,4 @@
+<%@page import="org.vigendy.dao.relSusUsu"%>
 <%@page import="org.vigendy.dao.Usuario"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
@@ -15,6 +16,7 @@
         <%
             HttpSession mysession= (HttpSession) request.getSession( false);
             Usuario user = (Usuario) mysession.getAttribute("usr");
+            relSusUsu rel = (relSusUsu) mysession.getAttribute("rel");
             if (user == null)
             {
                 response.sendRedirect("heroVS.jsp");
@@ -488,7 +490,43 @@
       <aside class="hidden lg:block lg:flex-shrink-0 lg:order-first">
         <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
           <!-- Your content -->
-          
+          <div class="h-full p-5">
+              <p class="text-4xl font-medium tracking-tight text-black">Tu suscripci&oacute;n:</p>
+              
+              <%
+                  String mensaje = "No cuentas con una suscripci&oacute;n activa, elija un plan.";
+                  String Fechafin ="";
+                  String color ="text-black";
+
+                  if (rel.getIdSus()==null)
+                  {
+                      mensaje = "No cuentas con una suscripci&oacute;n activa, elija un plan.";
+                  }
+                  else
+                  {
+                      if (rel.getIdSus() == 1)
+                  {
+                      mensaje = "Tu plan es ViBasic";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-green-500";
+                  }
+                  if (rel.getIdSus() == 2)
+                  {
+                      mensaje = "Tu plan es ViPro";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-teal-500";
+                  }
+                  if (rel.getIdSus() == 3)
+                  {
+                      mensaje = "Tu plan es ViPro+";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-yellow-500";
+                  }
+                  }
+              %>
+              <br><p class="mt-4 text-2xl text-green-900"><%=mensaje%><br><br><%=Fechafin%><%=rel.getFecFin()%></p>
+              <h2 class="text-4xl text-black md:text-5xl lg:text-6xl"></h2>
+        </div>
         </div>
       </aside>
     </main>

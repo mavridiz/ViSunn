@@ -40,7 +40,7 @@
                     else 
                     {
                         HttpSession mysession = request.getSession(true);
-                        Usuario user = usuarioHelper.getUsuarioByCorreo(request);   
+                        Usuario user = usuarioHelper.getUsuarioByCorreo(request);  
                         mysession = request.getSession();
                         mysession.setAttribute("usr",user);
                         response.sendRedirect("moduloVSinicio.jsp");

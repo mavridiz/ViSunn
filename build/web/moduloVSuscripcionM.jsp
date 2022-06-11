@@ -18,11 +18,18 @@
             HttpSession mysession= (HttpSession) request.getSession( false );
             
             Usuario user = (Usuario) mysession.getAttribute("usr");
+            relSusUsu rel = (relSusUsu) mysession.getAttribute("rel");
+                    
             if (user == null)
             {
                 response.sendRedirect("heroVS.jsp");
             }
-            mysession.setAttribute("rel",rel);
+                        if (rel == null)
+            {
+                response.sendRedirect("moduloVSinicio.jsp");
+            }
+
+            
         %>        
     </head>
     <body class="h-full overflow-hidden">
@@ -316,7 +323,13 @@
                               <p class="text-indigo-200 text-sm">Factura Anual ($0)</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-white text-teal-700 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViBasic</a>
+                            <form action="SQLsus.jsp">
+                            <button class="bg-white text-teal-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="1">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="IDtipo" value="month">
+                                Suscr&iacute;bete a ViBasic
+                            </button>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -358,7 +371,12 @@
                               <p class="text-gray-500 text-sm">Factura anual ($600)</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-teal-600 text-white hover:bg-teal-800 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViPro</a>
+                            <button class="bg-teal-600 text-white hover:bg-teal-800 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="2">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="Tipo" value="month">
+                                Suscr&iacute;bete a ViPro+
+                            </button>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -424,7 +442,13 @@
                               <p class="text-yellow-500 text-sm">Factura anual ($1,188)</p>
                             </div>
                           </div>
-                            <a href="#" class="bg-white text-yellow-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">Suscr&iacute;bete a ViSunn+</a>
+                            <button class="bg-white text-yellow-600 hover:bg-gray-400 duration-300 mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full">
+                                <input type="hidden" name="IDtipo" id="IDtipo" value="3">
+                                <input type="hidden" name="IDusu" id="IDusu" value="<%=user.getIdUsu()%>">
+                                <input type="hidden" name="Tipo" id="Tipo" value="month">
+                                Suscr&iacute;bete a ViPro+
+                            </button>
+                            </form>
                         </div>
                       </div>
                       <h4 class="sr-only">Features</h4>
@@ -473,13 +497,41 @@
         <div class="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100 overflow-y-auto">
           <!-- Your content -->
           <div class="h-full p-5">
-              <p class="text-2xl font-medium tracking-tight text-black">Tu suscripci&oacute;n:</p>
-              <%
-                  String tipoSus = "";
-                  if()
+              <p class="text-4xl font-medium tracking-tight text-black">Tu suscripci&oacute;n:</p>
               
+              <%
+                  String mensaje = "No cuentas con una suscripci&oacute;n activa, elija un plan.";
+                  String Fechafin ="";
+                  String color ="text-black";
+
+                  if (rel.getIdSus()==null)
+                  {
+                      mensaje = "No cuentas con una suscripci&oacute;n activa, elija un plan.";
+                  }
+                  else
+                  {
+                      if (rel.getIdSus() == 1)
+                  {
+                      mensaje = "Tu plan es ViBasic";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-green-500";
+                  }
+                  if (rel.getIdSus() == 2)
+                  {
+                      mensaje = "Tu plan es ViPro";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-teal-500";
+                  }
+                  if (rel.getIdSus() == 3)
+                  {
+                      mensaje = "Tu plan es ViPro+";
+                      Fechafin = "Tu plan acaba el: ";
+                      color = "text-yellow-500";
+                  }
+                  }
               %>
-              <h2 class="text-4xl font-extrabold tracking-tight text-black md:text-5xl lg:text-6xl"></h2>
+                <br><p class="mt-4 text-2xl text-green-900"><%=mensaje%><br><br><%=Fechafin%><%=rel.getFecFin()%></p>
+              <h2 class="text-4xl text-black md:text-5xl lg:text-6xl"></h2>
         </div>
       </aside>
     </main>

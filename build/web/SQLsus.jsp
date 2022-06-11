@@ -1,3 +1,4 @@
+<%@page import="org.vigendy.services.RelSusUsuService"%>
 <%@page import="org.vigendy.helper.relSusUsuHelper"%>
 <%@page import="org.vigendy.helper.Sesion.loginHelper"%>
 <%@page import="org.vigendy.helper.UsuarioHelper"%>
@@ -27,16 +28,23 @@
 <%
     relSusUsuHelper helper = new relSusUsuHelper();
     
+    boolean crear = false;
+    
     if( request == null )
     {
         return;
     }
     else 
     {
+        if( new relSusUsuHelper().existeSub(request) == false )
+        {
+            crear = new relSusUsuHelper().addRel(request);
+            response.sendRedirect("moduloVSinicio.jsp");
+        }
+        else    
         if ( new relSusUsuHelper().updateRel(request) )
         {
-            response.sendRedirect("moduloVSuscripcionM.jsp");
+            response.sendRedirect("moduloVSinicio.jsp");
         }
-
     }
 %>

@@ -53,16 +53,24 @@ public class relSusUsuHelper implements Serializable{
         return new RelSusUsuService().updateRelacion(getInteger(request.getParameter( "IDusu" )), getInteger(request.getParameter( "IDtipo" )), request.getParameter( "Tipo" ));
     }
     
-    public relSusUsu getRelById( HttpServletRequest request )
+    public boolean existeSub ( HttpServletRequest request )
     {
-        relSusUsu rel = null;
+        if( request.getParameter( "IDusu" )== null || getInteger(request.getParameter( "IDusu" )) == 0 )
+        {
+            return false;
+        }
+        return new RelSusUsuService().existeSub(getInteger(request.getParameter( "IDusu" )));
+    }
+    
+    public relSusUsu getRelById( HttpServletRequest request, Usuario user )
+    {
         Integer id = null;
-        id = getInteger( request.getParameter( "idUsu" ) );
+        id = user.getIdUsu();
         if( id == null )
         {
             return null;
         }
-        return new RelSusUsuService().getRelById(id );
+        return new RelSusUsuService().getRelById( id );
     }
         
         

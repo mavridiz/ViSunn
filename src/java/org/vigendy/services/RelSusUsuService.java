@@ -23,7 +23,7 @@ public class RelSusUsuService {
         relSusUsuHelper helper = new relSusUsuHelper();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO RELSUSUSU (IDUSU,IDSUS,FECINI,FECFIN) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO RELSUSUSU (IDUSU,IDSUS,FECINI,FECFIN) VALUES (?,?,?,?);";
         int row = 0;
         try 
         {
@@ -111,7 +111,7 @@ public class RelSusUsuService {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "SELECT * FROM RELSUSUSU WHERE IDUSU = ?";
+        String sql = "SELECT * FROM RELSUSUSU WHERE IDUSU = ?;";
         relSusUsu rel = null;
         try 
         {
@@ -131,8 +131,8 @@ public class RelSusUsuService {
             {
                 rel = new relSusUsu();
                 rel.setIdSusUsu(resultSet.getInt(1) );
-                rel.getIdUsu().setIdUsu(resultSet.getInt(2) );
-                rel.getIdSus().setIdSus(resultSet.getInt(3) );
+                rel.setIdUsu(resultSet.getInt(2) );
+                rel.setIdSus(resultSet.getInt(3) );
                 rel.setFecIni(resultSet.getDate(4) );
                 rel.setFecFin(resultSet.getDate(5) );
             } 
@@ -146,4 +146,38 @@ public class RelSusUsuService {
         }
         return null;
     }
+    public boolean existeSub ( Integer IdUsu )
+    {
+        Connection connection = null;
+        boolean existe = false;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "SELECT * FROM RELSUSUSU WHERE IDUSU = ?";
+        try 
+        {
+            connection = MySqlConnection.getConnection( );
+            if( connection == null )
+            {
+                return false;
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, IdUsu );
+            resultSet = preparedStatement.executeQuery( );        
+            if( resultSet == null )
+            {
+                existe = false;
+            }
+            while( resultSet.next() )
+            {
+                existe = true;
+            } 
+            resultSet.close();
+            MySqlConnection.closeConnection(connection);
+        }
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+        return existe;
+    } 
 }

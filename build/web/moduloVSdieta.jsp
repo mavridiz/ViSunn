@@ -257,7 +257,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
             </svg>
         </a>
-
+        
+          <form action="buscarSub.jsp">
+          <button>
           <a href="moduloVSuscripcionM.jsp" class="text-gray-400 hover:bg-gray-700 duration-300 flex-shrink-0 inline-flex items-center justify-center h-14 w-14 rounded-lg">
           <span class="sr-only">Suscripcion</span>
           <!-- Heroicon name: outline/pencil-alt -->
@@ -265,6 +267,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
         </a>
+        </button>
+        </form>
       </div>
     </nav>
 
@@ -275,23 +279,62 @@
         <h1 id="primary-heading" class="sr-only">Home</h1>
         <!-- Your content -->
 
-<div class="bg-white min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-  <div class="max-w-max mx-auto">
-    <main class="sm:flex">
-      <p class="text-4xl font-extrabold text-teal-600 sm:text-5xl">404</p>
-      <div class="sm:ml-6">
-        <div class="sm:border-l sm:border-gray-200 sm:pl-6">
-            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">P&aacute;gina no encontrada</h1>
-          <p class="mt-1 text-base text-gray-500">Por favor, revise el link</p>
+<a href="https://www.myprotein.es/thezone/recetas/pasta-con-salchichas"></a>
+    <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div class="absolute inset-0">
         </div>
-        <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-            <a href="moduloVSinicio.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Regresa al inicio </a>
-            <a href="heroVS.jsp" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-800 duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"> Cont&aacute;ctanos </a>
+        <div class="relative max-w-7xl mx-auto">
+          <div class="text-center">
+            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl">Dietas</h1>
+            <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">En este espacio podr&aacute;s revisar las dietas</p>
+          </div>
+            <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+
+              <div class="group relative rounded-lg">
+                <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 duration-300 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                  <img src="img/pastasalchichona.jpg" alt="" class="w-full h-full object-center object-cover">
+                </div>
+                <h3 class="mt-6 text-sm text-teal-600">
+                  <a href="pastaconsalchichas.html">
+                    <span class="absolute inset-0"></span>
+                    Para ganar masa muscular
+                  </a>
+                </h3>
+                <p class="text-lg font-semibold text-gray-900">Pasta con salchichas</p>
+                <p class="text-sm font-semibold text-gray-900">Dale una oportunidad a esta espectacular receta de pasta cremosa con salchichas</p>
+              </div>
+      
+              <div class="group relative">
+                <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 duration-300 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                  <img src="img/tortitasespinacas2.jpg" alt="">
+                </div>
+                <h3 class="mt-6 text-sm text-teal-600">
+                  <a href="tortitasdeespinacas.html">
+                    <span class="absolute inset-0"></span>
+                    Para ganar masa muscular
+                  </a>
+                </h3>
+                <p class="text-lg font-semibold text-gray-900">Tortitas de espinacas con salmon</p>
+                <p class="text-sm font-semibold text-gray-900">¿Quieres probar algo nuevo para alegrar un poco tus desayunos? Prueba esta deliciosa</p>
+              </div>
+      
+              <div class="group relative">
+                <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 duration-300 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                  <img src="img/tortitasplatano.jpg" alt="" class="w-full h-full object-center object-cover">
+                </div>
+                <h3 class="mt-6 text-sm text-teal-600">
+                  <a href="tortitasdeplatano.html">
+                    <span class="absolute inset-0"></span>
+                    Para obtener proteina
+                  </a>
+                </h3>
+                <p class="text-lg font-semibold text-gray-900">Tortitas proteicas de plátano</p>
+                <p class="text-sm font-semibold text-gray-900">Así es; con tan solo cuatro ingredientes podrás preparara unas deliciosas e irresistibles tortitas proteicas</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
-  </div>
-</div>
 
       </section>
 
